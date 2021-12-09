@@ -1,22 +1,21 @@
-import articleModule from '../modules/article.module';
-
+import postsModule from '../modules/posts.module';
 
 /**
- * Article 資料表
+ * posts 資料表
  */
 
-/*  Article GET 取得  */
-const articleGet = (req, res) => {
-  articleModule.selectArticle().then((result) => {
+/*  posts GET 取得  */
+const postsGet = (req, res) => {
+  postsModule.selectPosts().then((result) => {
     res.send(result); // 成功回傳result結果
   }).catch((err) => { return res.send(err); }); // 失敗回傳錯誤訊息
 };
 
-/* Article  POST 新增 */
-const articlePost = (req, res) => {
+/* posts  POST 新增 */
+const postsPost = (req, res) => {
   // 取得新增參數
   const insertValues = req.body;
-  articleModule.createArticle(insertValues).then((result) => {
+  postsModule.createPosts(insertValues).then((result) => {
     res.send(result); // 成功回傳result結果
   }).catch((err) => { return res.send(err); }); // 失敗回傳錯誤訊息
 };
@@ -28,6 +27,6 @@ const test = (req, res) => {
 
 export default {
   test,
-  articleGet,
-  articlePost
+  postsGet,
+  postsPost
 };

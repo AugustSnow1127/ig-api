@@ -10,18 +10,18 @@ const connectionPool = mysql.createPool({
 });
 
 
-/*  Article GET 取得  */
-const selectArticle = () => {
+/*  Posts GET 取得  */
+const selectPosts = () => {
   return new Promise((resolve, reject) => {
     connectionPool.getConnection((connectionError, connection) => { // 資料庫連線
       if (connectionError) {
         reject(connectionError); // 若連線有問題回傳錯誤
       } else {
-        connection.query( // Article撈取所有欄位的值組
+        connection.query( // Posts撈取所有欄位的值組
           `SELECT
             *
           FROM
-            info`
+            posts`
           , (error, result) => {
             if (error) {
               console.error('SQL error: ', error);
@@ -37,19 +37,19 @@ const selectArticle = () => {
   });
 };
 
-/* Article  POST 新增 */
-const createArticle = (insertValues) => {
+/* Posts  POST 新增 */
+const createPosts = (insertValues) => {
   return new Promise((resolve, reject) => {
     connectionPool.getConnection((connectionError, connection) => { // 資料庫連線
       if (connectionError) {
         reject(connectionError); // 若連線有問題回傳錯誤
       } else {
-        connection.query('INSERT INTO Article SET ?', insertValues, (error, result) => { // Article資料表寫入一筆資料
+        connection.query('INSERT INTO posts SET ?', insertValues, (error, result) => { // Posts資料表寫入一筆資料
           if (error) {
             console.error('SQL error: ', error);
             reject(error); // 寫入資料庫有問題時回傳錯誤
           } else if (result.affectedRows === 1) {
-            resolve(`新增成功！ article_id: ${result.insertId}`); // 寫入成功回傳寫入id
+            resolve(`新增成功！ post_id: ${result.insertId}`); // 寫入成功回傳寫入id
           }
           connection.release();
         });
@@ -59,7 +59,7 @@ const createArticle = (insertValues) => {
 };
 
 export default {
-  selectArticle,
-  createArticle
+  selectPosts,
+  createPosts
 };
 
