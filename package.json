@@ -12,13 +12,16 @@
     "forever": "forever start dist/index.bundle.js"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "express-validation": "^3.0.8",
+    "express-validator": "5.3.1",
     "forever": "^4.0.1",
     "global": "^4.4.0",
+    "http-status": "^1.5.0",
     "joi": "^13.0.2",
     "morgan": "^1.9.0",
     "mysql": "^2.18.1"
