@@ -78,7 +78,7 @@ const selectUserLogin = (insertValues) => {
               const userPassword = insertValues.user_password; // 使用者登入輸入的密碼
               bcrypt.compare(userPassword, dbHashPassword).then((res) => { // 使用bcrypt做解密驗證
                 if (res) {
-                  resolve('登入成功'); // 登入成功
+                  resolve(result[0]); // 登入成功
                 } else {
                   reject(new APPError.LoginError2()); // 登入失敗 輸入的密碼有誤
                 }
